@@ -154,3 +154,8 @@ a {
 a:hover {
   color: red;
 }
+
+#tenor-gif-embed {
+  max-width: 10rem;
+  max-height: 10rem;
+}
