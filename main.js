@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(changeOpacity,500)
 }, false);
 
-var logos = document.getElementsByTagName("object");
+let logos = document.getElementsByTagName("object");
 for(let logo of logos){
     logo.addEventListener('load', function() {
         for(let item of logo.contentWindow.document.getElementsByTagName('path')){
@@ -14,4 +14,9 @@ for(let logo of logos){
             }
         }
     )
+}
+
+let titre = document.getElementById("title");
+if ("ontouchstart" in document.documentElement){
+    titre.classList.add("mobile");
 }

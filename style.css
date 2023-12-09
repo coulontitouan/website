@@ -55,6 +55,10 @@ body>* {
     -webkit-text-fill-color: transparent;
 }
 
+#titre.mobile{
+    height: 6em;
+}
+
 h1 {
     display: inline;
     text-align: center;
@@ -69,6 +73,10 @@ h1 {
 
 #title:hover h1 {
     transform: translateY(-100%);
+}
+
+#titre.mobile:hover h1{
+    transform: none;
 }
 
 p {
@@ -108,10 +116,10 @@ object {
 }
 
 @media (pointer:none), (pointer:coarse) {
-    #title{
+    #title, #titre.mobile{
         height: 6em;
     }
-    #title:hover h1 {
+    #title:hover h1, #titre.mobile:hover h1 {
         transform: none;
     }
 }
