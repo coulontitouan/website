@@ -16,7 +16,6 @@ html {
 body {
     overflow: hidden;
     padding: 10%;
-    padding-top: 5%;
     height: 100%;
 }
 
@@ -37,8 +36,9 @@ body>* {
 }
 
 #photo img {
-    width: 30vmin;
+    width: 12em;
     border-radius: inherit;
+    clip-path: circle(40%);
 }
 
 #photo:hover img {
@@ -46,7 +46,7 @@ body>* {
 }
 
 #title {
-    top: 10%;
+    top: 3rem;
     display: flex;
     justify-content: center;
     overflow-y: hidden;
@@ -71,7 +71,7 @@ h1 {
 }
 
 p {
-    top: 20%;
+    top: 6rem;
     font-size: xx-large;
     text-align: center;
     color:snow;
@@ -80,7 +80,8 @@ p {
 footer {
     position: fixed;
     bottom: 0;
-    width: 40%;
+    width: 50%;
+    max-width: 50vw;
 }
 
 footer ul {
@@ -89,7 +90,7 @@ footer ul {
     justify-content: space-around;
     align-items: center;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 5%;
 }
 
 footer ul li a {
@@ -103,4 +104,10 @@ object {
 @font-face {
     font-family: "BeaufortBold";
     src: url(assets/fonts/RiotFont.ttf) format("truetype");
+}
+
+@media (pointer:none), (pointer:coarse) {
+    #title{
+        height: 6em;
+    }
 }
