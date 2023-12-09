@@ -1,165 +1,40 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-    <head>
-        <base href="/">
-        <meta charset="utf-8">
-        <title>Titouan Coulon</title>
-        <link rel="stylesheet" href="/styles/home.css">
-        <link rel="shortcut icon" type="image/x-icon" href="images/test.jpg"/>
-    </head>
-    <body>
-        <header class="header">
-            <a href="#" class="logo"><img src="escrimeurNav.png" alt="un escrimeur qui pointe son épée"></a>
-            <input class="menu-btn" type="checkbox" id="menu-btn" />
-            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-            <a onclick="shutdown()" id="shutdownbutton">
-                <button class="button-shutdown btn btn-warning" role="button">
-                    Fermer l'application
-                </button>
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Titouan Coulon</title>
+</head>
+
+<body>
+    <a id="photo" href="assets/images/photo.png"><img src="assets/images/photo.png" alt="photo"></a>
+    <div id="title">
+        <h1>Titouan Coulon</h1>
+        <h1>Livreur</h1>
+    </div>
+    <p>Étudiant en 2ème année de BUT Informatique à Orléans</p>
+</body>
+<footer>
+    <ul>
+        <li>
+            <a href="https://github.com/coulontitouan">
+                <object type="image/svg+xml" data="assets/svg/github.svg" width="32" height="32">logo github</object>
             </a>
-            <ul class="liens menu">
-                <li id="pageaccueil">
-                    <a href="#" onclick="javascript:someFunction(this)" class="active">Accueil</a>
-                </li>
-                <li id="pageinfos">
-                    <a href="#" onclick="javascript:someFunction(this)">Informations générales</a>
-                </li>
-                <li id="pagecreecompet">
-                    <a href="#" onclick="javascript:someFunction(this)"> Créer une compétition</a>
-                </li>
-                <li id="search">
-                    <form class="form-inline ">
-                        <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Rechercher"
-                            aria-label="Rechercher">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                    </form>
-                </li>
-                <li id="connexion">
-                    <svg id="boutonConnexion" width="160" height="70">
-                        <a href="#">
-                            <g>
-                                <rect width="120" height="40" x="5" y="15" rx="20" ry="20" fill="white"></rect>
-                                <circle cx="125" cy="35" r="30" fill="white"></circle>
-                            </g>
-                            <text x="60" y="35" text-anchor="middle" dominant-baseline="central" fill="black">
-                                Connexion
-                            </text>
-                            <image href="escrimeur.png" alt="logo escrimeur" width="40" height="40"
-                                x="105" y="15"></image>
-                        </a>
-                    </svg>
-                </li>
-            </ul>
-        </header>
-        
-        <main class="flex-shrink-0">
-            <div class="container">
-                <section>
-                    <h1>Informations</h1>
-                    <article>
-                        <h2>Règles</h2>
-                        <div>
-                            <p>
-                                <img id= "EscrimeInformation" src="regleEscrime.webp" alt="escrime">
-                                Une épreuve d'escrime oppose deux adversaires,                             chacun tentant de toucher l'autre sur les surfaces valables à l'aide de son arme. 
-                                Il s'agit de cumuler suffisamment de points pour gagner le combat. 
-                                Pour les épreuves en phase de poule, 
-                                le premier tireur qui marque 5 touches est déclaré vainqueur.
-                                Pour les épreuves en éliminations directe,
-                                le premier tireur qui marque 15 touches est déclaré vainqueur.
-                            </p>
-                            
-                        </div>
-                    </article>
-                    <article>
-                        <h2>Types d'armes</h2>
-                        <ul>
-                            <li>
-                                <h3>Fleuret</h3>
-                                <img id= "arme" src="Fleuret.png" alt="Fleuret">
-                                <p>L’arme « noble », 
-                                    car l’arme d’apprentissage.
-                                    Au Fleuret, il faut toucher son adversaire avec la pointe de l’arme. 
-                                    Celle-ci est équipée d’un petit interrupteur sous forme de poussoir, 
-                                    la pression exercée permet le contact et valide la touche. 
-                                    C’est par le fleuret qu’on apprend l’escrime. 
-                                    C’est la plus petite des trois armes, la plus maniable.
-                                    la surface valable est la plus petite des 3.
-                                    Lorsque l’on touche son adversaire sur la cuirasse, la lampe témoin s’allume de couleur
-                                    Pour corser la chose, la règle indique une priorité à l’attaquant, en clair, si les deux tireurs allument valable,
-                                    c’est celui qui est parti le premier qui marque le point</p>    
-                            </li>
-                            <li>
-                                <h3>Sabre</h3>
-                                <img id= "arme" src="Sabre.png" alt="Sabre">
-                                <p>La différence du sabre c'est qu'on peut toucher son adversaire avec toute la longueur de la lame 
-                                    (et non seulement la pointe) et que la surface valable est constituée par tout le haut du corps, 
-                                    bras et masque compris, seules les mains sont non valables
-                                     Le sabre est une arme dont la pratique est spectaculaire, car très rapide. Les actions y sont explosives et brèves</p>
-                            </li>
-                            <li>
-                                <h3>Épée</h3>
-                                <img id= "arme" src="Epee.png" alt="epee">
-                                <p>comme au fleuret, c’est avec la pointe qu’on touche. Si l’épée n’est pas l’arme la plus spectaculaire,
-                                     elle présente l’avantage d’être la plus facile à comprendre et à suivre en tant que spectateur
-                                     Premièrement, tout le corps de l’adversaire peut être touché, des pieds à la tête.
-                                     Deuxiemement à l’inverse des deux autres armes, donc pas de priorité, si les deux touchent c’est un point partout.
-                                     un assaut à l’épée est plus lent, plus patient,
-                                     car on doit tenir compte qu’on peut être touché en retour à chaque action qu’on déclenche
-                                    </p>    
-                            </li>
-                        </ul>
-                    </article>
-                    <article>
-                        <h2>Catégories</h2>
-                    </article>
-                
-                </section>
-            </div>
-            <a href="#" id="backTop" class="hidden"><img src="redArrow.png" alt=""></a>
-        </main>
-    
-        <footer id="footer">
-            <div class="container">
-                <span class="text-muted">IUT'O - Titouan COULON, Noam DOUCET, Anthony GARDELLE, Arthur GOUDAL, Killian
-                    OUZET</span>
-            </div>
-        </footer>
-        <script>
-    
-            function shutdown() {
-                alert("Fermeture de l'application.")
-            }
-    
-            let btn = document.querySelector('#backTop');
-    
-            let header = document.querySelector(".header");
-    
-            let lastScrollValue = 0;
-    
-            document.addEventListener("scroll", (event) => {
-                let top = document.documentElement.scrollTop;
-                let scrollPercentage = (window.pageYOffset * 100) / (document.body.scrollHeight - window.innerHeight)
-    
-                if (lastScrollValue < top) {
-                    header.classList.add("hidden");
-                    document.getElementById("menu-btn").checked = false;
-                } else {
-                    header.classList.remove("hidden");
-                }
-                if (scrollPercentage > 10) {
-                    btn.classList.remove("hidden");
-                } else {
-                    btn.classList.add("hidden");
-                }
-                lastScrollValue = top;
-            });
-            function someFunction(boutton) {
-                let btn = document.querySelector(".active");
-                btn.classList.remove("active")
-                boutton.classList.add("active")
-            }
-        </script>
-    </body>
-    
-    </html>
+        </li>
+        <li>
+            <a href="https://discord.com/users/524926551431708674">
+                <object type="image/svg+xml" data="assets/svg/discord.svg" width="32" height="32">logo discord</object>
+            </a>
+        </li>
+        <li>
+            <a href="mailto:coulontitouan@gmail.com">
+                <object type="image/svg+xml" data="assets/svg/email.svg" width="32" height="32">logo email</object>
+            </a>
+        </li>
+    </ul>
+</footer>
+<script type="text/javascript" src="main.js"></script>
+</html>
