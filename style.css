@@ -6,14 +6,14 @@
 
 html {
     opacity: 0;
-    backdrop-filter: blur(10px);
     background-color: #0f172a;
-    font-family: "BeaufortBold";
+    font-family: "BeaufortBold", sans-serif;
     width: 100%;
     height: 100%;
 }
 
 body {
+    background-color: inherit;
     overflow: hidden;
     padding: 10%;
     height: 100%;
