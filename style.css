@@ -109,6 +109,10 @@ footer ul li a {
     display: flex;
 }
 
+object{
+    pointer-events: none;
+}
+
 @font-face {
     font-family: "BeaufortBold";
     src: url(assets/fonts/RiotFont.ttf) format("truetype");
