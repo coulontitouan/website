@@ -44,7 +44,6 @@ body>* {
 #title {
     top: 3rem;
     display: flex;
-    justify-content: center;
     overflow-y: hidden;
     height: 3em;
     width: fit-content;
@@ -55,8 +54,20 @@ body>* {
     -webkit-text-fill-color: transparent;
 }
 
-#titre.mobile{
+#title.mobile{
     height: 6em;
+}
+
+#title:hover h1 {
+    transform: translateY(-100%);
+}
+
+#title.mobile:hover h1{
+    transform: none;
+}
+
+#title.mobile > h1:last-child{
+    background-image: -webkit-linear-gradient(90deg, #005A82, #0AC8B9);
 }
 
 h1 {
@@ -71,16 +82,8 @@ h1 {
     -webkit-text-fill-color: inherit;
 }
 
-#title:hover h1 {
-    transform: translateY(-100%);
-}
-
-#titre.mobile:hover h1{
-    transform: none;
-}
-
 p {
-    top: 6rem;
+    top: calc(6rem + 5vh);
     font-size: xx-large;
     text-align: center;
     color:snow;
@@ -106,20 +109,7 @@ footer ul li a {
     display: flex;
 }
 
-object {
-    pointer-events: none;
-}
-
 @font-face {
     font-family: "BeaufortBold";
     src: url(assets/fonts/RiotFont.ttf) format("truetype");
-}
-
-@media (pointer:none), (pointer:coarse) {
-    #title, #titre.mobile{
-        height: 6em;
-    }
-    #title:hover h1, #titre.mobile:hover h1 {
-        transform: none;
-    }
 }
