@@ -6,41 +6,33 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(changeOpacity,500)
 }, false);
 
-// let logos = document.getElementsByTagName("object");
-// for(let logo of logos){
-//     logo.addEventListener('load', function() {
-//         for(let item of logo.contentWindow.document.getElementsByTagName('path')){
-//                 item.style.fill = "snow"
-//             }
-//         }
-//     )
-// }
+
 let i = 0;
 let elements = document.querySelector("#title").children;
 let textsList = Array.from(elements).map(function(element) {
     return element.textContent || element.innerText;
-  });
-  
+});
+
 
 function typeWriter() {
-  if (i < textsList[currentElement].length) {
-    elements[currentElement].innerHTML = elements[currentElement].innerHTML.replace("<br>", "");
-    elements[currentElement].innerHTML += textsList[currentElement].charAt(i);
-    i++;
-    setTimeout(typeWriter, 50);
-  } else {
-    currentElement++;
-    if (currentElement < elements.length) {
+    if (i < textsList[currentElement].length) {
+        elements[currentElement].innerHTML = elements[currentElement].innerHTML.replace("<br>", "");
+        elements[currentElement].innerHTML += textsList[currentElement].charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    } else {
+        currentElement++;
+        if (currentElement < elements.length) {
       setTimeout(startTyping, 500);
     }
-  }
+}
 }
 
 let currentElement = 0;
 
 function startTyping() {
-  i = 0;
-  typeWriter();
+    i = 0;
+    typeWriter();
 }
 
 
@@ -50,4 +42,17 @@ if ("ontouchstart" in document.documentElement || window.matchMedia("(pointer:no
         element.innerHTML = "<br>";
     })
     setTimeout(startTyping, 1500);
+}
+
+// Ce morceau de code n'est jamais éxecuté mais je prefere le garder ici
+if(0==1){
+    let logos = document.getElementsByTagName("object");
+    for(let logo of logos){
+        logo.addEventListener('load', function() {
+            for(let item of logo.contentWindow.document.getElementsByTagName('path')){
+                    item.style.fill = "snow"
+                }
+            }
+        )
+    }
 }
