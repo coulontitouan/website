@@ -34,7 +34,7 @@ function startTyping() {
 }
 
 
-if ("ontouchstart" in document.documentElement || window.matchMedia("(pointer:none), (pointer:coarse)").matches) {
+if ("ontouchstart" in document.documentElement || window.matchMedia("(pointer:none), (pointer:coarse)").matches || true) {
     document.getElementById("title").classList.add("mobile");
     Array.from(elements).forEach(function (element) {
         element.innerHTML = "<br>";
