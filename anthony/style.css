@@ -1,0 +1,99 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: black;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: white;
+    font-size: 2em;
+}
+
+h1 {
+    font-size: 3em;
+    padding: 20px;
+}
+
+h1::after,
+h1::before {
+    content: '🤓';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+#champion-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 200px;
+}
+
+.champion-section {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid black;
+    position: relative;
+}
+
+.champion-section p {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+}
+
+.champion-details>img {
+    width: 300px;
+}
+
+.correct {
+    border-color: green !important;
+}
+
+.incorrect {
+    border-color: red;
+}
+
+.selected {
+    border-color: blue;
+}
+
+.bouton {
+    width: 100%;
+    position: fixed;
+    bottom: 5px;
+    padding: 5px;
+    z-index: 1;
+}
+
+#valider {
+    background-color: #4CAF50;
+}
+
+#rejouer {
+    background-color: #1418ff;
+}
+
+#champion-input {
+    font-size: larger;
+    text-align: center;
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+#classement{
+    list-style: square;
+}
+
+#classement li{
+    color: white;
+    text-align: center;
+}

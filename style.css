@@ -1,0 +1,113 @@
+* {
+    margin: 0;
+    padding: 0;
+    transition: ease-in-out .75s;
+    --gold: -webkit-linear-gradient(90deg, #785A28, #C89B3C);
+    --blue: -webkit-linear-gradient(90deg, #005A82, #0AC8B9);
+}
+
+html {
+    opacity: 0;
+    background-color: #0f172a;
+    font-family: "OpenSansBold", sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: inherit;
+    overflow: hidden;
+    padding: 10%;
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80%;
+}
+
+li {
+    list-style: none;
+}
+
+body>* {
+    position: relative;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+#photo {
+    display: flex;
+    width: fit-content;
+    border-radius: 45px;
+}
+
+#photo img {
+    height: 15em;
+    border-radius: inherit;
+}
+
+#title {
+    display: flex;
+    width: fit-content;
+    flex-wrap: wrap;
+    background: var(--gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 120%;
+}
+
+#title.mobile:hover h1{
+    transform: none;
+}
+
+h1 {
+    display: inline;
+    text-align: center;
+    flex-basis: 100%;
+    transition: ease-in-out .5s;
+    width: fit-content;
+    background: inherit;
+    -webkit-background-clip: inherit;
+    background-clip: inherit;
+    -webkit-text-fill-color: inherit;
+}
+
+p {
+    font-size: xx-large;
+    text-align: center;
+    color:snow;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 50%;
+    max-width: 50vw;
+}
+
+footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5%;
+}
+
+footer ul li a {
+    display: flex;
+}
+
+object{
+    pointer-events: none;
+}
+
+@font-face {
+    font-family: "BeaufortBold";
+    src: url(assets/fonts/RiotFont.ttf) format("truetype");
+}
+@font-face {
+    font-family: "OpenSansBold";
+    src: url(assets/fonts/OpenSans-Bold.ttf) format("truetype");
+}

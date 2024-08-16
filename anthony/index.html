@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>ANTHONY APPRENDRE CHAMPIONS GAME</h1>
+    <div id="champion-container">
+        <button class="bouton" onclick="valider()" id="valider">Valider</button>
+    </div>
+
+    <script>
+        let debut = null;
+        let fini = false;
+        function valider() {
+            let correct = document.querySelectorAll('.correct').length;
+            let incorrect = document.querySelectorAll('.incorrect').length;
+            let total = document.querySelectorAll('.champion-section').length;
+            let pourcentage = (correct / total) * 100;
+            alert(`${correct} champions sur ${total} (${pourcentage.toFixed(2)}%) en ${((Date.now() - debut) / 1000).toFixed(2)} secondes`);
+            for (const section of document.querySelectorAll('.champion-section')) {
+                let p = document.createElement('p');
+                p.innerText = section.id;
+                section.appendChild(p);
+                if (!section.classList.contains('correct')) {
+                    section.classList.add('incorrect');
+                }
+            }
+            fini = true;
+            let button = document.getElementById('valider');
+            button.innerText = 'Rejouer';
+            button.id = 'rejouer';
+            button.onclick = location.reload.bind(location);
+            fetch('https://api.jsonbin.io/v3/b/6606c417acd3cb34a8301f4f/latest', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    let game = {
+                        pseudo: null,
+                        champions: `${pourcentage.toFixed(2)}%`,
+                        temps: ((Date.now() - debut) / 1000).toFixed(2),
+                        date: Date.now(),
+                    }
+                    let records = Object.values(data.record);
+                    records.push(game);
+                    records.sort((a, b) => {
+                        if (parseFloat(a.champions) === parseFloat(b.champions)) {
+                            if (parseFloat(a.temps) === parseFloat(b.temps)) {
+                                return parseFloat(a.date) - parseFloat(b.date);
+                            }
+                            return parseFloat(a.temps) - parseFloat(b.temps);
+                        }
+                        return parseFloat(b.champions) - parseFloat(a.champions);
+                    });
+                    records = records.slice(0, 10);
+                    if (records.includes(game)) {
+                        game.pseudo = prompt('Entrez votre pseudo pour enregistrer votre score');
+                        if (game.pseudo) {
+                            fetch('https://api.jsonbin.io/v3/b/6606c417acd3cb34a8301f4f', {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify(
+                                    records
+                                )
+                            })
+                                .catch(error => console.error('Une erreur s\'est produite lors de l\'envoi des données:', error));
+                        }
+                    }
+                })
+                .catch(error => console.error('Une erreur s\'est produite lors de l\'envoi des données:', error));
+        }
+
+        function updateChampionInfo(championData) {
+            const championContainer = document.getElementById('champion-container');
+            function shuffleObject(obj) {
+                let entries = Object.entries(obj);
+                for (let i = entries.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [entries[i], entries[j]] = [entries[j], entries[i]];
+                }
+                return Object.fromEntries(entries);
+            }
+            championData.data = shuffleObject(championData.data);
+            for (const championId in championData.data) {
+                const champion = championData.data[championId];
+                const championImage = champion.image.full;
+
+                const section = document.createElement('div');
+                section.classList.add('champion-section');
+                section.id = champion.name;
+
+                const img = document.createElement('img');
+                img.setAttribute('src', `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.id}_0.jpg`);
+                img.setAttribute('loading', 'lazy');
+                section.appendChild(img);
+                function onclick(event) {
+                    if (fini) {
+                        return;
+                    }
+                    let response = document.getElementById('champion-input').value;
+                    if (!response) {
+                        return;
+                    } else {
+                        if (debut === null) {
+                            debut = Date.now();
+                        }
+                    }
+                    function texter(text) {
+                        return text.toLowerCase().replace("'", '').replace(' ', '').normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    }
+                    if (texter(response) === texter(champion.name)) {
+                        section.classList.add('correct');
+                        section.removeEventListener('click', onclick)
+                        let input = document.getElementById('champion-input');
+                        input.value = '';
+                        let next = section.nextElementSibling;
+                        if (next) {
+                            next.classList.add('selected');
+                            section.classList.remove('selected');
+                            next.appendChild(input);
+                            input.focus();
+                            next.scrollIntoView();
+                        } else {
+                            document.getElementById('valider').click();
+                        }
+                    } else {
+                        section.classList.add('incorrect');
+                    }
+                    section.classList.remove('selected');
+                }
+                section.addEventListener('keyup', onclick);
+
+                championContainer.appendChild(section);
+            }
+            document.querySelector('.champion-section').classList.add('selected');
+            let input = document.createElement('input');
+            input.setAttribute('type', 'text');
+            input.setAttribute('autofocus', 'true');
+            input.id = 'champion-input';
+            document.querySelector('.selected').appendChild(input);
+        }
+
+
+
+        fetch('https://ddragon.leagueoflegends.com/api/versions.json')
+            .then(response => response.json())
+            .then(response => {
+                document.title = response[0];
+                fetch(`https://ddragon.leagueoflegends.com/cdn/${document.title}/data/fr_FR/champion.json`)
+                    .then(response => response.json())
+                    .then(data => updateChampionInfo(data))
+                    .catch(error => console.error('Une erreur s\'est produite lors du chargement du fichier JSON:', error));
+            });
+    </script>
+</body>
+
+</html>

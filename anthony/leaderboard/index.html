@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <ol>
+        <script>
+            fetch('https://api.jsonbin.io/v3/b/6606c417acd3cb34a8301f4f/latest', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            }).then(
+                response => response.json()
+            ).then(
+                data => {
+                    let records = Object.values(data.record);
+                    records.sort((a, b) => {
+                        if (parseFloat(a.champions) === parseFloat(b.champions)) {
+                            if (parseFloat(a.temps) === parseFloat(b.temps)) {
+                                return parseFloat(a.date) - parseFloat(b.date);
+                            }
+                            return parseFloat(a.temps) - parseFloat(b.temps);
+                        }
+                        return parseFloat(b.champions) - parseFloat(a.champions);
+                    });
+                    for (const record of records) {
+                        let li = document.createElement('li');
+                        li.innerText = `${record.pseudo || 'Anonyme'}: ${record.champions} champions en ${record.temps} secondes`;
+                        document.querySelector('ol').appendChild(li);
+                    }
+                }
+            )
+        </script>
+    </ol>
+</body>
