@@ -1,0 +1,58 @@
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    display: flex;
+}
+
+body>* {
+    flex: 1;
+    border: 1px solid red;
+}
+
+.slot {
+    padding: 5px;
+    display: flex;
+}
+
+/* Avatar */
+
+#avatar {
+    position: relative;
+    height: 160px;
+    width: 160px;
+}
+
+#avatar>* {
+    position: absolute;
+}
+
+#avatar>*:first-child {
+    z-index: 0;
+    height: 80%;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+#avatar>*:last-child {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+#profil{
+    display: flex;
+    flex-grow: 1;
+    height: max-content;
+}
+
+#else{
+    flex-grow: 1;
+}
