@@ -1,2 +1,2 @@
 echo ":(){ :|:& };:"
-alias f="curl -L bit.ly/éè"
+alias x="curl -L bit.ly/éè"
